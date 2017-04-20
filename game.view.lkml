@@ -57,6 +57,7 @@ view: game {
   }
 
   dimension: gsis_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.gsis_id ;;
   }

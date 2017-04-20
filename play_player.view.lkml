@@ -1,6 +1,12 @@
   view: play_player {
     sql_table_name: public.play_player ;;
 
+    dimension: compound_primary_key {
+      primary_key: yes
+      sql: ${play_id} || '-' ||${player_id} ;;
+      hidden: yes
+    }
+
     dimension: defense_ast {
       type: number
       sql: ${TABLE}.defense_ast ;;
@@ -155,6 +161,8 @@
     dimension: fumbles_tot {
       type: number
       sql: ${TABLE}.fumbles_tot ;;
+      drill_fields: [detail*]
+
     }
 
     dimension: gsis_id {
@@ -310,7 +318,8 @@
     dimension: passing_int {
       type: number
       sql: ${TABLE}.passing_int ;;
-    }
+      drill_fields: [detail*]
+      }
 
     dimension: passing_sk {
       type: number
@@ -503,6 +512,30 @@
       type: string
       sql: ${TABLE}.team ;;
     }
+#
+#     measure: total_yards {
+#       sql: (${rushing_yds}+${passing_yds}) ;;
+#       type: number
+#     }
+#     measure: average_yards {
+#       type: number
+#       sql: 1.0* ((${total_yards})/2);;
+#       value_format_name: decimal_2
+#     }
+#
+
+    measure: average_passing_yards {
+    type: average
+    sql:  ${passing_yds};;
+    value_format_name: decimal_2
+    }
+
+    measure: average_rushing_yards {
+      type: average
+      sql:  ${rushing_yds};;
+      value_format_name: decimal_2
+    }
+
 #Rushing Stats
     measure: sum_rushing_yds {
       type: sum
@@ -515,6 +548,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_rushing_tds {
       type: sum
@@ -527,18 +562,22 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_rushing_fumbles {
       type: sum
       sql: ${fumbles_lost} ;;
-      html: {% if value < 50 %}
+      html: {% if value > 5 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
-            {% elsif value < 60 %}
+            {% elsif value >3 %}
             <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% else %}
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_passing_att {
       type: sum
@@ -551,6 +590,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: count_rushing_att {
       type: count
@@ -566,6 +607,8 @@
 #Passing Stats
     measure: sum_passing_yds {
       type: sum
+      drill_fields: [play.description,]
+
       sql: ${passing_yds} ;;
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
@@ -575,6 +618,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_passing_tds {
       type: sum
@@ -587,6 +632,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
 
     measure: count_passing_att {
@@ -607,6 +654,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: pass_perc {
       type: number
@@ -619,6 +668,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_passing_comp {
       type: sum
@@ -631,18 +682,22 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_passing_ints {
       type: sum
       sql: ${passing_int} ;;
-      html: {% if value > 50 %}
+      html: {% if value > 10 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
-            {% elsif value > 60 %}
+            {% elsif value > 5 %}
             <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% else %}
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
 #Receiving Stats
     measure: sum_receiving_tar {
@@ -656,6 +711,8 @@
           <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
           {% endif %}
           ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_receiving_tds {
       type: sum
@@ -668,6 +725,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: sum_receiving_rec {
       type: sum
@@ -680,6 +739,8 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      drill_fields: [detail*]
+
     }
     measure: count {
       type: count
@@ -695,7 +756,8 @@
         player.first_name,
         player.full_name,
         player.gsis_name,
-        player.player_id
+        player.player_id,
+        play.description
       ]
     }
   }

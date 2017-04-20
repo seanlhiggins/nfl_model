@@ -1,9 +1,12 @@
 view: play {
   sql_table_name: public.play ;;
 
-
-  dimension: play_id {
+  dimension: compound_primary_key {
+    sql: ${play_id}||'-'||${gsis_id} ;;
     primary_key: yes
+    hidden: yes
+  }
+  dimension: play_id {
     type: number
     sql: ${TABLE}.play_id ;;
   }
@@ -11,6 +14,74 @@ view: play {
     group_label: "Scoring Plays"
     type: yesno
     sql: (LOWER(${description}) LIKE '%touchdown%') AND (LOWER(${description}) NOT LIKE '%intercepted%') ;;
+  }
+
+  dimension: formation {
+    type: string
+    sql: CASE WHEN lower(${description}) LIKE '%no huddle%shotgun%' THEN 'No Huddle, Shotgun'
+          WHEN lower(${description}) LIKE '%no huddle%under centre%' THEN 'No Huddle, Under Centre'
+          WHEN lower(${description}) LIKE '%shotgun%' THEN 'Shotgun'
+          WHEN lower(${description}) LIKE '%under centre%' THEN 'Under Centre'
+          WHEN lower(${description}) LIKE '%punt%' THEN 'Punt'
+          WHEN lower(${description}) LIKE '%field goal%' THEN 'Field Goal'
+          ELSE 'Under Centre'
+          END;;
+    drill_fields: [description]
+  }
+
+  dimension: pass_play_type {
+    type: string
+    sql:  CASE WHEN (lower(${description}) LIKE '%short left%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Short Left'
+      WHEN (lower(${description}) LIKE '%short middle%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Short Middle'
+      WHEN (lower(${description}) LIKE '%short right%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Short Right'
+      WHEN (lower(${description}) LIKE '%deep left%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Deep Left'
+      WHEN (lower(${description}) LIKE '%deep middle%' AND lower(${description}) NOT LIKE '%incomplete%') THEN 'Deep Middle'
+      WHEN (lower(${description}) LIKE '%deep right%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Deep Right'
+      WHEN (lower(${description}) LIKE '%pass to%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Pass'
+      WHEN (lower(${description}) LIKE '%pass left%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Pass Left'
+      WHEN (lower(${description}) LIKE '%pass middle%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Pass Middle'
+      WHEN (lower(${description}) LIKE '%pass right%' AND lower(${description}) NOT LIKE '%incomplete%')  THEN 'Pass Right'
+      END ;;
+    drill_fields: [description]
+
+}
+
+    dimension: run_play_type {
+    type: string
+    sql:  CASE
+      WHEN lower(${description}) LIKE '%left tackle%' THEN 'Left Tackle'
+      WHEN lower(${description}) LIKE '%up the middle%' THEN 'Centre'
+      WHEN lower(${description}) LIKE '%left guard%' THEN 'Left Guard'
+      WHEN lower(${description}) LIKE '%right tackle%' THEN 'Right Tackle'
+      WHEN lower(${description}) LIKE '%right guard%' THEN 'Right Guard'
+      WHEN lower(${description}) LIKE '%left end%' THEN 'Left End'
+      WHEN lower(${description}) LIKE '%right end%' THEN 'Right End'
+      WHEN lower(${description}) LIKE '%scramble%' THEN 'Scramble'
+      END;;
+  }
+  dimension: other_play_type {
+    sql: CASE
+      WHEN lower(${description}) LIKE '%kicks%' THEN 'Kickoff'
+      WHEN lower(${description}) LIKE '%sacked%' THEN 'Sack'
+      WHEN lower(${description}) LIKE '%punt%' THEN 'Punt'
+      WHEN lower(${description}) LIKE '%field goal%' THEN 'Field Goal'
+      WHEN lower(${description}) LIKE '%no play%' THEN 'No Play'
+      WHEN lower(${description}) LIKE '%incomplete%' THEN 'Incomplete Pass'
+      WHEN lower(${description}) LIKE '%fumble%' THEN 'Fumble'
+      WHEN lower(${description}) LIKE '%penalty%' THEN 'Penalty'
+      WHEN lower(${description}) LIKE '%two-point%' THEN 'Two Point'
+      WHEN lower(${description}) LIKE '%kneel%' THEN 'Kneel'
+      WHEN lower(${description}) LIKE '%spike%' THEN 'Spike'
+      WHEN lower(${description}) LIKE '%intercepted%' THEN 'Interception'
+      WHEN lower(${description}) LIKE '%extra point%' THEN 'Extra Point'
+      ELSE 'Other'
+      END
+          ;;
+      type: string
+}
+  dimension: yardlines {
+    sql: CAST(${TABLE}.yardlines as numeric) ;;
+    type: number
   }
 
   dimension: is_safety {
@@ -30,6 +101,8 @@ view: play {
     type: yesno
     sql:  LOWER(${description}) LIKE '%intercepted%touchdown%';;
   }
+
+
 
   dimension: description {
     type: string
@@ -81,9 +154,15 @@ view: play {
     sql: ${TABLE}.drive_id ;;
   }
 
+  dimension: is_two_point_conversion_attempt {
+  type: yesno
+  sql: ${description} LIKE '%TWO-POINT CONVERSION ATTEMPT%' ;;
+  }
+
+
   dimension: is_active_play {
     type: yesno
-    sql: ${is_extra_point} = 'no' AND ${is_penalty} = 'no' AND ${timeout}=0  AND ${down} IS NOT NULL;;
+    sql: ${description} NOT LIKE '%extra point%' AND ${description} NOT LIKE '%TWO-POINT CONVERSION ATTEMPT%' AND ${is_penalty} = 'no'   AND ${down} IS NOT NULL;;
   }
 
   measure: count_active_plays {
@@ -158,7 +237,7 @@ view: play {
 
   dimension: is_penalty {
     type: yesno
-    sql: ${TABLE}.penalty =1;;
+    sql: ${TABLE}.penalty = 1;;
   }
 
   dimension: is_penalty_first_down {
@@ -204,6 +283,10 @@ view: play {
     type: string
     sql: ${TABLE}.time ;;
   }
+  dimension: absolute_time {
+    type: number
+    sql: substring(${time},',',2) ;;
+  }
 
   dimension_group: time_inserted {
     type: time
@@ -230,14 +313,17 @@ view: play {
   dimension: yardline {
     type: string
 #     sql:  substring('(-1)' FROM '[0-9]+') ;;
-    sql: ${TABLE}.yardline ;;
+    sql: ${TABLE}.yardline;;
   }
 
   dimension: yards_to_go {
     type: number
     sql: ${TABLE}.yards_to_go ;;
   }
-
+    dimension: yards_to_go_string {
+      type: string
+      sql: ${TABLE}.yards_to_go ;;
+    }
   dimension: ytg_sampling {
     type: tier
     tiers: [5,10,15,20]
@@ -249,12 +335,12 @@ view: play {
   dimension: state {
     type: string
     sql:
-    CASE WHEN (${yards_to_go}<=5 OR ${yards.yardline}>45) AND ${down} = 1 THEN '1st <5'
+    CASE WHEN (${yards_to_go}<=5) AND ${down} = 1 THEN '1st <5'
     WHEN ${yards_to_go}<=10 AND ${down} = 1 THEN '1st<10'
     WHEN ${yards_to_go}<=15 AND ${down} = 1 THEN '1st<15'
     WHEN ${yards_to_go}<=20 AND ${down} = 1 THEN '1st<20'
     WHEN ${yards_to_go} >20 AND ${down} = 1 THEN '1st20+'
-    WHEN ${yards_to_go}<=5 AND ${down} = 2 THEN '2nd< 5'
+    WHEN ${yards_to_go}<=5 AND ${down} = 2 THEN '2nd <5'
     WHEN ${yards_to_go}<=10 AND ${down} = 2 THEN '2nd<10'
     WHEN ${yards_to_go}<=15 AND ${down} = 2 THEN '2nd<15'
     WHEN ${yards_to_go}<=20 AND ${down} = 2 THEN '2nd<20'
@@ -291,6 +377,7 @@ view: play {
     }
   }
 
+
   measure: fg_count {
     type: count
     filters: {
@@ -298,6 +385,7 @@ view: play {
       value: "yes"
     }
   }
+
   measure: sfty_count {
     type: count
     filters: {
@@ -336,7 +424,9 @@ view: play {
   }
   measure: expected_points {
     type: number
-    sql: (${td_perc}*7)+(${fg_perc}*3)+(${sfty_perc}*-2)+(${pick6_perc}*-6);;
+    sql: (${td_perc}*7)+(${fg_perc}*3);;
+    value_format: "#.00"
+
 
 
     html: {% if value <1 %}

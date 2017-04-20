@@ -11,11 +11,19 @@ view: player {
     type: string
     sql: ${TABLE}.birthdate ;;
   }
+
   dimension: portrait {
     label: "Player Portrait"
-    sql: 'JOH127799' ;;
+    sql: ${TABLE}.esb_id ;;
+    type: string
+    link: {url:"http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/{{rendered_value}}.png"}
     html: <img height=80 width=80 src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/{{rendered_value}}.png">
       ;;
+  }
+
+  dimension: esb_id {
+    sql: ${TABLE}.esb_id;;
+    type: string
   }
 
   dimension: college {
@@ -31,6 +39,7 @@ view: player {
   dimension: full_name {
     type: string
     sql: ${TABLE}.full_name ;;
+    drill_fields: [team,birthdate,college]
   }
 
   dimension: gsis_name {
@@ -71,6 +80,10 @@ view: player {
   dimension: team {
     type: string
     sql: ${TABLE}.team ;;
+    link:{
+      label: "Team Play Analysis Dashboard"
+      url: "https://localhost:9999/dashboards/8"
+    }
   }
 
   dimension: uniform_number {
