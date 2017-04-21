@@ -15,6 +15,7 @@ explore: agg_play {
 #       value: "2013"
 #     }
 #   }
+
   join: play {
     type: left_outer
     sql_on: ${agg_play.play_id}=${play.play_id} ;;
