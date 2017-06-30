@@ -46,8 +46,26 @@ explore: drive {
   }
 
 }
+explore: weather {}
+explore: game {
+  sql_always_where: ${season_year}<=2013 ;;
+  join: weather {
+    sql_on:
+    ${game.home_team}=${weather.home_team_corr}
+    AND ${game.start_date}=${weather.game_played_date}
 
-# explore: game {} # don't need right now, Game is joined in to other explores but haven't needed it on its own
+    ;;
+    type: inner
+    relationship: one_to_one
+  }
+  join: play_player {
+    type: inner
+    sql_on: ${game.gsis_id}=${play_player.gsis_id};;
+    relationship: one_to_many
+}
+}
+
+# don't need right now, Game is joined in to other explores but haven't needed it on its own
 
 # explore: meta {} # as with Game, no need for meta on its own.
 

@@ -384,12 +384,20 @@ view: play {
       field: is_fg
       value: "yes"
     }
+    filters: {
+      field: is_active_play
+      value: "yes"
+    }
   }
 
   measure: sfty_count {
     type: count
     filters: {
       field: is_safety
+      value: "yes"
+    }
+    filters: {
+      field: is_active_play
       value: "yes"
     }
   }
@@ -399,7 +407,10 @@ view: play {
     filters: {
       field: is_pick6
       value: "yes"
-
+    }
+    filters: {
+      field: is_active_play
+      value: "yes"
     }
   }
   measure: fg_perc {
@@ -426,6 +437,8 @@ view: play {
     type: number
     sql: (${td_perc}*7)+(${fg_perc}*3);;
     value_format: "#.00"
+    drill_fields: [description]
+
 
 
 

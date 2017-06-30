@@ -1,119 +1,144 @@
   view: play_player {
+    view_label: "Plays by Player"
+    label: "Player Plays"
     sql_table_name: public.play_player ;;
 
     dimension: compound_primary_key {
       primary_key: yes
-      sql: ${play_id} || '-' ||${player_id} ;;
+      sql: ${gsis_id} || '-' || ${play_id} || '-' ||${player_id} ;;
       hidden: yes
     }
 
     dimension: defense_ast {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_ast ;;
     }
 
     dimension: defense_ffum {
       type: number
+      group_label: "Defense"
+
       sql: ${TABLE}.defense_ffum ;;
     }
 
     dimension: defense_fgblk {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_fgblk ;;
     }
 
     dimension: defense_frec {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_frec ;;
     }
 
     dimension: defense_frec_tds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_frec_tds ;;
     }
 
     dimension: defense_frec_yds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_frec_yds ;;
     }
 
     dimension: defense_int {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_int ;;
     }
 
     dimension: defense_int_tds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_int_tds ;;
     }
 
     dimension: defense_int_yds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_int_yds ;;
     }
 
     dimension: defense_misc_tds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_misc_tds ;;
     }
 
     dimension: defense_misc_yds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_misc_yds ;;
     }
 
     dimension: defense_pass_def {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_pass_def ;;
     }
 
     dimension: defense_puntblk {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_puntblk ;;
     }
 
     dimension: defense_qbhit {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_qbhit ;;
     }
 
     dimension: defense_safe {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_safe ;;
     }
 
     dimension: defense_sk {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_sk ;;
     }
 
     dimension: defense_sk_yds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_sk_yds ;;
     }
 
     dimension: defense_tkl {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_tkl ;;
     }
 
     dimension: defense_tkl_loss {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_tkl_loss ;;
     }
 
     dimension: defense_tkl_loss_yds {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_tkl_loss_yds ;;
     }
 
     dimension: defense_tkl_primary {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_tkl_primary ;;
     }
 
     dimension: defense_xpblk {
       type: number
+      group_label: "Defense"
       sql: ${TABLE}.defense_xpblk ;;
     }
 
@@ -125,41 +150,50 @@
 
     dimension: fumbles_forced {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_forced ;;
     }
 
     dimension: fumbles_lost {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_lost ;;
     }
 
     dimension: fumbles_notforced {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_notforced ;;
     }
 
     dimension: fumbles_oob {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_oob ;;
     }
 
     dimension: fumbles_rec {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_rec ;;
     }
 
     dimension: fumbles_rec_tds {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_rec_tds ;;
     }
 
     dimension: fumbles_rec_yds {
       type: number
+      group_label:"Fumbles"
       sql: ${TABLE}.fumbles_rec_yds ;;
     }
 
     dimension: fumbles_tot {
       type: number
+      group_label:"Fumbles"
+
       sql: ${TABLE}.fumbles_tot ;;
       drill_fields: [detail*]
 
@@ -172,187 +206,229 @@
 
     dimension: kicking_all_yds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_all_yds ;;
     }
 
     dimension: kicking_downed {
       type: number
+      group_label: "Kicking"
+
       sql: ${TABLE}.kicking_downed ;;
     }
 
     dimension: kicking_fga {
       type: number
+      group_label: "Kicking"
+
       sql: ${TABLE}.kicking_fga ;;
     }
 
     dimension: kicking_fgb {
       type: number
+      group_label: "Kicking"
+
       sql: ${TABLE}.kicking_fgb ;;
     }
 
     dimension: kicking_fgm {
+      group_label: "Kicking"
+
       type: number
       sql: ${TABLE}.kicking_fgm ;;
     }
 
     dimension: kicking_fgm_yds {
       type: number
+
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_fgm_yds ;;
     }
 
     dimension: kicking_fgmissed {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_fgmissed ;;
     }
 
     dimension: kicking_fgmissed_yds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_fgmissed_yds ;;
     }
 
     dimension: kicking_i20 {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_i20 ;;
     }
 
     dimension: kicking_rec {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_rec ;;
     }
 
     dimension: kicking_rec_tds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_rec_tds ;;
     }
 
     dimension: kicking_tot {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_tot ;;
     }
 
     dimension: kicking_touchback {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_touchback ;;
     }
 
     dimension: kicking_xpa {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_xpa ;;
     }
 
     dimension: kicking_xpb {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_xpb ;;
     }
 
     dimension: kicking_xpmade {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_xpmade ;;
     }
 
     dimension: kicking_xpmissed {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_xpmissed ;;
     }
 
     dimension: kicking_yds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kicking_yds ;;
     }
 
     dimension: kickret_fair {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_fair ;;
     }
 
     dimension: kickret_oob {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_oob ;;
     }
 
     dimension: kickret_ret {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_ret ;;
     }
 
     dimension: kickret_tds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_tds ;;
     }
 
     dimension: kickret_touchback {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_touchback ;;
     }
 
     dimension: kickret_yds {
       type: number
+      group_label: "Kicking"
       sql: ${TABLE}.kickret_yds ;;
     }
 
     dimension: passing_att {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_att ;;
     }
 
     dimension: passing_cmp {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_cmp ;;
     }
 
     dimension: passing_cmp_air_yds {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_cmp_air_yds ;;
     }
 
     dimension: passing_incmp {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_incmp ;;
     }
 
     dimension: passing_incmp_air_yds {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_incmp_air_yds ;;
     }
 
     dimension: passing_int {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_int ;;
       drill_fields: [detail*]
       }
 
     dimension: passing_sk {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_sk ;;
     }
 
     dimension: passing_sk_yds {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_sk_yds ;;
     }
 
     dimension: passing_tds {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_tds ;;
     }
 
     dimension: passing_twopta {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_twopta ;;
     }
 
     dimension: passing_twoptm {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_twoptm ;;
     }
 
     dimension: passing_twoptmissed {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_twoptmissed ;;
     }
 
     dimension: passing_yds {
       type: number
+      group_label:"Passing"
       sql: ${TABLE}.passing_yds ;;
     }
 
@@ -370,141 +446,169 @@
 
     dimension: punting_blk {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.punting_blk ;;
     }
 
     dimension: punting_i20 {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.punting_i20 ;;
     }
 
     dimension: punting_tot {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.punting_tot ;;
     }
 
     dimension: punting_touchback {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.punting_touchback ;;
     }
 
     dimension: punting_yds {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.punting_yds ;;
     }
 
     dimension: puntret_downed {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_downed ;;
     }
 
     dimension: puntret_fair {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_fair ;;
     }
 
     dimension: puntret_oob {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_oob ;;
     }
 
     dimension: puntret_tds {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_tds ;;
     }
 
     dimension: puntret_tot {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_tot ;;
     }
 
     dimension: puntret_touchback {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_touchback ;;
     }
 
     dimension: puntret_yds {
       type: number
+      group_label:"Punting"
       sql: ${TABLE}.puntret_yds ;;
     }
 
     dimension: receiving_rec {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_rec ;;
     }
 
     dimension: receiving_tar {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_tar ;;
     }
 
     dimension: receiving_tds {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_tds ;;
     }
 
     dimension: receiving_twopta {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_twopta ;;
     }
 
     dimension: receiving_twoptm {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_twoptm ;;
     }
 
     dimension: receiving_twoptmissed {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_twoptmissed ;;
     }
 
     dimension: receiving_yac_yds {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_yac_yds ;;
     }
 
     dimension: receiving_yds {
       type: number
+      group_label:"Receiving"
       sql: ${TABLE}.receiving_yds ;;
     }
 
     dimension: rushing_att {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_att ;;
     }
 
     dimension: rushing_loss {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_loss ;;
     }
 
     dimension: rushing_loss_yds {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_loss_yds ;;
     }
 
     dimension: rushing_tds {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_tds ;;
     }
 
     dimension: rushing_twopta {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_twopta ;;
     }
 
     dimension: rushing_twoptm {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_twoptm ;;
     }
 
     dimension: rushing_twoptmissed {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_twoptmissed ;;
     }
 
     dimension: rushing_yds {
       type: number
+      group_label:"Rushing"
       sql: ${TABLE}.rushing_yds ;;
     }
 
@@ -526,20 +630,32 @@
 
     measure: average_passing_yards {
     type: average
+      group_label: "Passing Stats"
     sql:  ${passing_yds};;
     value_format_name: decimal_2
+      filters: {
+        field: passing_att
+        value: "1"
+      }
     }
 
     measure: average_rushing_yards {
       type: average
-      sql:  ${rushing_yds};;
       value_format_name: decimal_2
+      group_label: "Rushing Stats"
+      sql:  ${rushing_yds};;
+      filters: {
+        field: rushing_att
+        value: "1"
+      }
     }
 
 #Rushing Stats
-    measure: sum_rushing_yds {
+    measure: total_rushing_yds {
       type: sum
       sql: ${rushing_yds} ;;
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -548,12 +664,18 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      filters: {
+        field: rushing_att
+        value: "1"
+      }
       drill_fields: [detail*]
 
     }
-    measure: sum_rushing_tds {
+    measure: total_rushing_tds {
       type: sum
       sql: ${rushing_tds} ;;
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -565,9 +687,11 @@
       drill_fields: [detail*]
 
     }
-    measure: sum_rushing_fumbles {
+    measure: total_rushing_fumbles {
       type: sum
       sql: ${fumbles_lost} ;;
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
       html: {% if value > 5 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value >3 %}
@@ -576,12 +700,18 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      filters: {
+        field: rushing_att
+        value: "1"
+      }
       drill_fields: [detail*]
 
     }
-    measure: sum_passing_att {
+    measure: total_passing_att {
       type: sum
       sql: ${passing_att} ;;
+      value_format_name: decimal_2
+      group_label: "Passing Stats"
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -590,11 +720,17 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      filters: {
+        field: passing_att
+        value: "1"
+      }
       drill_fields: [detail*]
 
     }
     measure: count_rushing_att {
       type: count
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
       filters: {
         field: rushing_att
         value: "1"
@@ -602,13 +738,16 @@
     }
     measure: rush_perc {
       type: number
-      sql: 1.0*${sum_passing_att}/nullif(${count},0) ;;
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
+      sql: 1.0*${total_rushing_att}/nullif(${count},0) ;;
     }
 #Passing Stats
-    measure: sum_passing_yds {
+    measure: total_passing_yds {
       type: sum
       drill_fields: [play.description,]
-
+      value_format_name: decimal_2
+      group_label: "Passing Stats"
       sql: ${passing_yds} ;;
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
@@ -618,10 +757,14 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      filters: {
+        field: passing_att
+        value: "1"
+      }
       drill_fields: [detail*]
 
     }
-    measure: sum_passing_tds {
+    measure: total_passing_tds {
       type: sum
       sql: ${passing_tds} ;;
       html: {% if value < 50 %}
@@ -638,14 +781,18 @@
 
     measure: count_passing_att {
       type: count
+      value_format_name: decimal_2
+      group_label: "Passing Stats"
       filters: {
         field: passing_att
         value: "1"
       }
     }
-    measure: sum_rushing_att {
+    measure: total_rushing_att {
       type: sum
-      sql: ${rushing_att} ;;
+      value_format_name: decimal_2
+      group_label: "Rushing Stats"
+      sql: COALESCE(${rushing_att},0) ;;
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -654,12 +801,18 @@
             <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% endif %}
             ;;
+      filters: {
+        field: rushing_att
+        value: "1"
+      }
       drill_fields: [detail*]
 
     }
     measure: pass_perc {
       type: number
-      sql: 1.0*${sum_rushing_att}/nullif(${count},0) ;;
+      sql: 1.0*${total_rushing_att}/nullif(${count},0) ;;
+      value_format_name: percent_2
+      group_label: "Passing Stats"
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -671,9 +824,11 @@
       drill_fields: [detail*]
 
     }
-    measure: sum_passing_comp {
+    measure: total_passing_comp {
       type: sum
-      sql: ${passing_cmp} ;;
+      sql: COALESCE(${passing_cmp},0) ;;
+      value_format_name: decimal_2
+      group_label: "Passing Stats"
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value < 60 %}
@@ -685,9 +840,11 @@
       drill_fields: [detail*]
 
     }
-    measure: sum_passing_ints {
+    measure: total_passing_ints {
       type: sum
       sql: ${passing_int} ;;
+      value_format_name: decimal_2
+      group_label: "Passing Stats"
       html: {% if value > 10 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
             {% elsif value > 5 %}
@@ -700,9 +857,9 @@
 
     }
 #Receiving Stats
-    measure: sum_receiving_tar {
+    measure: total_receiving_tar {
       type: sum
-      sql: ${receiving_tar} ;;
+      sql: COALESCE(${receiving_tar},0) ;;
       html: {% if value < 50 %}
           <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
           {% elsif value < 60 %}
@@ -714,7 +871,7 @@
       drill_fields: [detail*]
 
     }
-    measure: sum_receiving_tds {
+    measure: total_receiving_tds {
       type: sum
       sql: ${receiving_tds} ;;
       html: {% if value < 50 %}
@@ -728,7 +885,7 @@
       drill_fields: [detail*]
 
     }
-    measure: sum_receiving_rec {
+    measure: total_receiving_rec {
       type: sum
       sql: ${receiving_rec} ;;
       html: {% if value < 50 %}
