@@ -47,6 +47,23 @@ explore: drive {
 
 }
 explore: weather {}
+
+explore: home_team {
+  from: game
+  fields: [ALL_FIELDS*, -away_team.home_team,-home_team.away_team]
+  label: "Team vs Team"
+  view_label: "Team"
+  sql_always_where:  ${home_team.home_team} != 'UNK';;
+  join: away_team {
+    fields: [away_team.away_team]
+    view_label: "Team"
+    from: game
+    sql_on: ${home_team.home_team}=${away_team.home_team} and ${home_team.away_team}=${away_team.away_team};;
+    relationship: many_to_one
+  }
+}
+
+
 explore: game {
   sql_always_where: ${season_year}<=2013 ;;
   join: weather {
@@ -116,10 +133,18 @@ explore: play_player {
 #     sql_on: ${player_avatars.player_id}=${play_player.player_id} ;;
 #   }
 }
-explore: running_backs_summary {
+
+datagroup: etl_schedule {
+  sql_trigger: select max(id) from etl_run ;;
+  max_cache_age: "48 hours"
+}
+explore: dt_running_back_facts {
+  group_label: "Positions"
+  label: "Running Backs"
+  persist_with: etl_schedule
   join: play_player {
     type: inner
-    sql_on: ${play_player.player_id}=${running_backs_summary.player_id} ;;
+    sql_on: ${play_player.player_id}=${dt_running_back_facts.player_player_id} ;;
     relationship: one_to_many
   }
   join: play {
@@ -129,7 +154,28 @@ explore: running_backs_summary {
   }
   join: player {
     type: inner
-    sql_on: ${running_backs_summary.player_id} = ${player.player_id} ;;
+    sql_on: ${dt_running_back_facts.player_player_id} = ${player.player_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: dt_quarterback_facts {
+  group_label: "Positions"
+  label: "QuarterBacks"
+  persist_with: etl_schedule
+  join: play_player {
+    type: inner
+    sql_on: ${play_player.player_id}=${dt_quarterback_facts.player_player_id} ;;
+    relationship: one_to_many
+  }
+  join: play {
+    type: inner
+    sql_on: ${play_player.play_id} = ${play.play_id} AND ${play_player.gsis_id} = ${play.gsis_id} AND ${play_player.drive_id} = ${play.drive_id};;
+    relationship: many_to_one
+  }
+  join: player {
+    type: inner
+    sql_on: ${dt_quarterback_facts.player_player_id} = ${player.player_id} ;;
     relationship: many_to_one
   }
 }
