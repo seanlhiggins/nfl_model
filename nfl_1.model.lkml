@@ -6,6 +6,13 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
+persist_for: "2 hours"
+# explore: new_urls {
+#   join: team {
+#     sql_on: ${new_urls.url} LIKE ('%'||${team.name}||'%') ;;
+#     relationship: one_to_one
+# }
+# }
 explore: agg_play {
   fields: [ALL_FIELDS*]
 
@@ -46,7 +53,7 @@ explore: drive {
   }
 
 }
-explore: weather {}
+
 
 explore: home_team {
   from: game
@@ -60,6 +67,10 @@ explore: home_team {
     from: game
     sql_on: ${home_team.home_team}=${away_team.home_team} and ${home_team.away_team}=${away_team.away_team};;
     relationship: many_to_one
+  }
+  join: weather {
+    sql_on: ${home_team.home_team} = ${weather.home_team_abbr} and ${home_team.start_date} = ${weather.game_played_date} ;;
+    relationship: one_to_one
   }
 }
 
