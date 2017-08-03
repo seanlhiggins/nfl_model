@@ -612,6 +612,19 @@
       sql: ${TABLE}.rushing_yds ;;
     }
 
+    dimension: count_plays_run {
+      type: string
+      sql: (SELECT
+            COUNT(play_player.team)  AS count_teams
+            FROM public.play_player  AS play_player
+            INNER JOIN public.game  AS game ON game.gsis_id=play_player.gsis_id
+            WHERE (((game.season_year ) = 2015) AND ((play_player.team ) = 'SD'))
+            OR
+            (((game.season_year ) = 2016) AND (((play_player.team ) = 'SF')
+            OR ((play_player.team ) = 'ARI')))
+             );;
+    }
+
     dimension: team {
       type: string
       sql: ${TABLE}.team ;;
@@ -785,6 +798,8 @@
       drill_fields: [detail*]
 
     }
+
+
 
     measure: count_passing_att {
       type: count

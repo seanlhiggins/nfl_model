@@ -62,10 +62,54 @@ view: player {
     sql: ${TABLE}.position ;;
   }
 
+  filter: position_selector {
+    suggestions: ["QB","RB","WR"]
+  }
+
+  dimension: position_comparitor {
+    type: string
+    sql: CASE
+      WHEN {% condition position_selector %} ${position}::text {% endcondition %}
+        THEN ${position}::text
+      ELSE 'All Other Positions'
+    END ;;
+  }
+
+  dimension: is_sd_player_or_active {
+    sql: ${status}='Active' OR ${team}='SD'  ;;
+    type: yesno
+  }
+
+  dimension: conditional_output {
+    case: {
+      when: {
+        sql: ${status}='Active' ;;
+        label: "Green"
+      }
+      when: {
+        sql: ${team}='SF' ;;
+        label: "Red"
+      }
+      else: "White"
+    }
+  }
+
   dimension: profile_id {
     type: number
+    hidden: yes
     sql: ${TABLE}.profile_id ;;
   }
+
+  dimension: profile_test {
+    type: number
+    hidden: yes
+    label: "profile_id"
+  }
+  dimension: profile_shown {
+    sql: CASE WHEN user_attributes.shown = 'true' THEN ${profile_test} ELSE ${profile_id} END ;;
+  }
+
+
 
   dimension: profile_url {
     type: string
@@ -76,6 +120,8 @@ view: player {
     type: string
     sql: ${TABLE}.status ;;
   }
+
+
 
   dimension: team {
     type: string
