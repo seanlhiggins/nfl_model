@@ -650,6 +650,10 @@
         field: passing_att
         value: "1"
       }
+      # filters: {
+      #   field: player.position
+      #   value: "QB"
+      # }
     }
 
     measure: average_rushing_yards {
@@ -765,7 +769,7 @@
 #Passing Stats
     measure: total_passing_yds {
       type: sum
-      drill_fields: [play.description,]
+
       value_format_name: decimal_2
       group_label: "Passing Stats"
       sql: ${passing_yds} ;;
@@ -786,6 +790,7 @@
     }
     measure: total_passing_tds {
       type: sum
+      group_label: "Passing Stats"
       sql: ${passing_tds} ;;
       html: {% if value < 50 %}
             <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
@@ -836,11 +841,11 @@
       value_format_name: percent_2
       group_label: "Passing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -852,11 +857,11 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -868,11 +873,11 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value > 10 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% elsif value > 5 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]

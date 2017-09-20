@@ -450,8 +450,7 @@ view: play {
         <div style="color: black; background-color: #49cec1; font-size: 100%; text-align:center"> {{rendered_value}} </div>
       {% endif %}
       ;;
-#     value_format_name: decimal_4
-      value_format: "#.00"
+
     }
 
     measure: expected_points_excl_fg {
