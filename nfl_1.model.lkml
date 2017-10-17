@@ -116,6 +116,11 @@ explore: play_player {
     sql_on: ${play_player.play_id} = ${play.play_id} AND ${play_player.gsis_id} = ${play.gsis_id} AND ${play_player.drive_id} = ${play.drive_id};;
     relationship: many_to_one
   }
+  join: play_extended {
+    type: inner
+    sql_on: ${play_player.play_id} = ${play_extended.play_id} AND ${play_player.gsis_id} = ${play_extended.gsis_id} AND ${play_player.drive_id} = ${play_extended.drive_id};;
+    relationship: many_to_one
+  }
 
   join: drive {
     type: inner

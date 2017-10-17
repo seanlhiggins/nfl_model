@@ -1,3 +1,6 @@
+view: play_extended{
+  extends: [play]
+}
 view: play {
   sql_table_name: public.play ;;
 
