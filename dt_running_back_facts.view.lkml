@@ -22,7 +22,7 @@ view: dt_running_back_facts {
       WHERE player.position IN ('RB', 'UNK')
       GROUP BY 1,2,3,4,5,6
       ORDER BY 7 DESC
-      LIMIT 500
+
        ;;
   }
 

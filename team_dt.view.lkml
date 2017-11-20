@@ -12,8 +12,8 @@ view: team {
       ORDER BY 1
       LIMIT 500
        ;;
-      indexes: ["team_id"]
-      persist_for: "24 hours"
+#       indexes: ["team_id"]
+#       persist_for: "24 hours"
   }
 
   measure: count {

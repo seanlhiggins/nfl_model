@@ -20,7 +20,7 @@ view: dt_quarterback_facts {
 
       GROUP BY 1,2,3,4,5
       ORDER BY 9 DESC
-      LIMIT 10
+
        ;;
   }
 

@@ -109,7 +109,7 @@ explore: play {
 
 
 explore: play_player {
-  fields: [ALL_FIELDS*]
+  # fields: [ALL_FIELDS*]
 
   join: play {
     type: inner
