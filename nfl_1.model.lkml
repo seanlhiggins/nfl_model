@@ -56,11 +56,17 @@ explore: drive {
 
 
 explore: home_team {
+  always_filter: {
+    filters: {
+      field: datetime
+      value: "today"
+    }
+  }
   from: game
   fields: [ALL_FIELDS*, -away_team.home_team,-home_team.away_team]
   label: "Team vs Team"
   view_label: "Team"
-  sql_always_where:  ${home_team.home_team} != 'UNK';;
+  sql_always_where:  ${home_team.home_team} != 'UNK' AND {% parameter datetime %} = ${start_date};;
   join: away_team {
     fields: [away_team.away_team]
     view_label: "Team"

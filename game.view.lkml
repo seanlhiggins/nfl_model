@@ -150,6 +150,12 @@ view: game {
     sql: ${TABLE}.season_year ;;
   }
 
+  parameter: datetime {
+    type: date
+    # default_value: "today"
+    suggest_dimension: start_date
+  }
+
   dimension_group: start {
     type: time
     timeframes: [time, date, week, month, year, day_of_week]
