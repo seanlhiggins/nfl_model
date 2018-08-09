@@ -83,6 +83,10 @@ view: drive {
     type: number
     sql: ${TABLE}.yards_gained ;;
   }
+  measure: total_yards_gained {
+    type: sum
+    sql: ${TABLE}.yards_gained ;;
+  }
   dimension: is_td_drive {
     sql: ${result}  = 'Touchdown';;
     type: yesno
