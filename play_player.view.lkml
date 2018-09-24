@@ -674,11 +674,11 @@
       value_format_name: decimal_2
       group_label: "Rushing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       filters: {
@@ -701,11 +701,11 @@
       value_format_name: decimal_2
       group_label: "Rushing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -717,11 +717,11 @@
       value_format_name: decimal_2
       group_label: "Rushing Stats"
       html: {% if value > 5 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value >3 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       filters: {
@@ -737,11 +737,11 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       filters: {
@@ -774,11 +774,11 @@
       group_label: "Passing Stats"
       sql: ${passing_yds} ;;
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       filters: {
@@ -793,11 +793,11 @@
       group_label: "Passing Stats"
       sql: ${passing_tds} ;;
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -821,11 +821,11 @@
       group_label: "Rushing Stats"
       sql: COALESCE(${rushing_att},0) ;;
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       filters: {
@@ -841,11 +841,11 @@
       value_format_name: percent_2
       group_label: "Passing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -857,11 +857,11 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -873,11 +873,11 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value > 10 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% elsif value > 5 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ rendered_value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -888,11 +888,11 @@
       type: sum
       sql: COALESCE(${receiving_tar},0) ;;
       html: {% if value < 50 %}
-          <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+          <div style="color: black; color:#f7436#C80815margin: 0; border-radius: 5px; align:center">{{ value }}</div>
           {% elsif value < 60 %}
-          <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+          <div style="color: black; color:#f74368#101820n: 0; border-radius: 5px; align:center">{{ value }}</div>
           {% else %}
-          <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+          <div style="color: black; color:#f74368#0070af: 0; border-radius: 5px; align:center">{{ value }}</div>
           {% endif %}
           ;;
       drill_fields: [detail*]
@@ -902,11 +902,11 @@
       type: sum
       sql: ${receiving_tds} ;;
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
@@ -916,11 +916,11 @@
       type: sum
       sql: ${receiving_rec} ;;
       html: {% if value < 50 %}
-            <div style="color: black; background-color: #dc7350; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% elsif value < 60 %}
-            <div style="color: black; background-color: #e9b404; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% else %}
-            <div style="color: black; background-color: #49cec1; margin: 0; border-radius: 5px; text-align:center">{{ value }}</div>
+            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
             {% endif %}
             ;;
       drill_fields: [detail*]
