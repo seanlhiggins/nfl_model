@@ -777,7 +777,7 @@
 #       <a href="/dashboards/8">{{rendered_value}}</a>
 #             ;;
       link: {
-        url: "/dashboards/8"
+        url: "/dashboards/38"
         label: "Play Dashboard"
       }
       filters: {
