@@ -773,13 +773,8 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       sql: ${passing_yds} ;;
-      html: {% if value < 50 %}
-            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
-            {% elsif value < 60 %}
-            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ value }}</div>
-            {% else %}
-            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ value }}</div>
-            {% endif %}
+      html:
+      <a href="/dashboards/8">{{rendered_value}}</a>
             ;;
       filters: {
         field: passing_att
