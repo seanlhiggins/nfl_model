@@ -773,9 +773,13 @@
       value_format_name: decimal_2
       group_label: "Passing Stats"
       sql: ${passing_yds} ;;
-      html:
-      <a href="/dashboards/8">{{rendered_value}}</a>
-            ;;
+#       html:
+#       <a href="/dashboards/8">{{rendered_value}}</a>
+#             ;;
+      link: {
+        url: "/dashboards/8"
+        label: "Play Dashboard"
+      }
       filters: {
         field: passing_att
         value: "1"
