@@ -774,7 +774,7 @@
       group_label: "Passing Stats"
       sql: ${passing_yds} ;;
       html:
-      <a href="/dashboards/38" target="_self">{{rendered_value}}</a>
+      <a href="/embed/dashboards/38" target="_self">{{rendered_value}}</a>
             ;;
 #       link: {
 #         url: "/dashboards/38"
