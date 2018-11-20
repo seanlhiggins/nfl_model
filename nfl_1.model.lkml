@@ -22,6 +22,7 @@ explore: agg_play {
 #       value: "2013"
 #     }
 #   }
+#
 
   join: play {
     type: left_outer
@@ -118,7 +119,10 @@ explore: play {
 
 explore: play_player {
   # fields: [ALL_FIELDS*]
-
+  access_filter: {
+    user_attribute: team
+    field: player.team
+  }
   join: play {
     type: inner
     sql_on: ${play_player.play_id} = ${play.play_id} AND ${play_player.gsis_id} = ${play.gsis_id} AND ${play_player.drive_id} = ${play.drive_id};;
