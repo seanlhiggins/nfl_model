@@ -87,6 +87,11 @@ view: drive {
     type: sum
     sql: ${TABLE}.yards_gained ;;
   }
+  measure: avg_yards_gained {
+    label: "Average Yards Gained"
+    type: average
+    sql: ${TABLE}.yards_gained ;;
+  }
   dimension: is_td_drive {
     sql: ${result}  = 'Touchdown';;
     type: yesno

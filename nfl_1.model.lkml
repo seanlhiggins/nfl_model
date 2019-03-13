@@ -118,7 +118,6 @@ explore: play {
 
 
 explore: play_player {
-  # fields: [ALL_FIELDS*]
   access_filter: {
     user_attribute: team
     field: player.team
