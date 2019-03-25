@@ -6,7 +6,12 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-persist_for: "2 hours"
+datagroup: nfl_daily_datagroup {
+  sql_trigger: SELECT CURRENT_DATE ;;
+  max_cache_age: "24 hours"
+}
+
+persist_with: nfl_daily_datagroup
 # explore: new_urls {
 #   join: team {
 #     sql_on: ${new_urls.url} LIKE ('%'||${team.name}||'%') ;;
