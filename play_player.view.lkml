@@ -850,8 +850,16 @@
       drill_fields: [detail*]
 
     }
+    filter: destination {
+      default_value: ""
+      type: string
+    }
     measure: total_passing_comp {
       type: sum
+      link: {
+        label: "Change Metric"
+        url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
+      }
       sql: COALESCE(${passing_cmp},0) ;;
       value_format_name: decimal_2
       group_label: "Passing Stats"
@@ -869,6 +877,10 @@
     measure: total_passing_ints {
       type: sum
       sql: ${passing_int} ;;
+      link: {
+        label: "Change Metric"
+        url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
+      }
       value_format_name: decimal_2
       group_label: "Passing Stats"
       html: {% if value > 10 %}
