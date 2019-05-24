@@ -863,14 +863,14 @@
       sql: COALESCE(${passing_cmp},0) ;;
       value_format_name: decimal_2
       group_label: "Passing Stats"
-      html: {% if value < 50 %}
-            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% elsif value < 60 %}
-            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% else %}
-            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% endif %}
-            ;;
+#       html: {% if value < 50 %}
+#             <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% elsif value < 60 %}
+#             <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% else %}
+#             <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% endif %}
+#             ;;
       drill_fields: [detail*]
 
     }
@@ -883,14 +883,14 @@
       }
       value_format_name: decimal_2
       group_label: "Passing Stats"
-      html: {% if value > 10 %}
-            <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% elsif value > 5 %}
-            <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% else %}
-            <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
-            {% endif %}
-            ;;
+#       html: {% if value > 10 %}
+#             <div style="color: black; color:#C80815 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% elsif value > 5 %}
+#             <div style="color: black; color:#101820 margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% else %}
+#             <div style="color: black; color:#0070af margin: 0; border-radius: 5px; align:center">{{ rendered_value }}</div>
+#             {% endif %}
+#             ;;
       drill_fields: [detail*]
 
     }
