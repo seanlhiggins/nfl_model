@@ -911,11 +911,10 @@ measure: dynamic_metric {
       {% else %}
       ${total_passing_tds} + ${total_rushing_tds}
       {% endif %};;
-#   link: {
-#     label: "Change Metric"
-#     url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
-#   }
-  html: <a href="?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{rendered_value}}</a> ;;
+  link: {
+    label: "Change Metric"
+    url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
+  }
 }
 
 #Receiving Stats
