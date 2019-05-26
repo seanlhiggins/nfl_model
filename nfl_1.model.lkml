@@ -92,6 +92,7 @@ explore: home_team {
 
 
 explore: game {
+  hidden: yes
   sql_always_where: ${season_year}<=2013 ;;
   join: weather {
     sql_on:
@@ -216,7 +217,9 @@ explore: dt_quarterback_facts {
   }
 }
 
-explore: player {}
+explore: player {
+  hidden: yes
+}
 
 explore: team {
   join: play_player {
