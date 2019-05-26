@@ -890,7 +890,7 @@
       {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
       ${fumbles_lost}
       {% else %}
-      ${passing_tds} + ${rushing_tds
+      ${passing_tds} + ${rushing_tds}
       {% endif %};;
       link: {
         label: "Change Metric"
