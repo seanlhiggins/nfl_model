@@ -884,9 +884,9 @@
     measure: total_passing_ints {
       type: sum
       sql:
-      {% if dynamic_metric_selector._parameter_value =='INT' %}
+      {% if dynamic_metric_selector._parameter_value =="INT" %}
       ${passing_int}
-      {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
+      {% elsif dynamic_metric_selector._parameter_value =="FUM" %}
       ${fumbles_lost}
       {% else %}
       ${passing_tds} + ${rushing_tds}
