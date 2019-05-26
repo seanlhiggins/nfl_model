@@ -885,17 +885,8 @@
     measure: total_passing_ints {
       type: sum
       sql:
-      {% if dynamic_metric_selector._parameter_value =='INT' %}
-      ${passing_int}
-      {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
-      ${fumbles_lost}
-      {% else %}
-      ${passing_tds} + ${rushing_tds}
-      {% endif %};;
-      link: {
-        label: "Change Metric"
-        url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
-      }
+      ${passing_int};;
+
       value_format_name: decimal_2
       group_label: "Passing Stats"
 #       html: {% if value > 10 %}
@@ -907,8 +898,25 @@
 #             {% endif %}
 #             ;;
       drill_fields: [detail*]
-
     }
+
+measure: dynamic_metric {
+  label: "Dynamic Metric"
+  type: number
+  description: "Metric changes with parameter selection; INT/FUM/TD"
+  sql: {% if dynamic_metric_selector._parameter_value =='INT' %}
+      ${total_passing_ints}
+      {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
+      ${total_rushing_fumbles}
+      {% else %}
+      ${total_passing_tds} + ${total_rushing_tds}
+      {% endif %};;
+  link: {
+    label: "Change Metric"
+    url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
+  }
+}
+
 #Receiving Stats
     measure: total_receiving_tar {
       type: sum
