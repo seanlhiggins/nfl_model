@@ -4,7 +4,7 @@ view: team {
         new_urls.url  AS "new_urls.url",
         team.name  AS "team.name",
         team.city  AS "team.city",
-        team.team_id  AS "team.team_id"
+        CASE WHEN team.team_id = 'UNK' THEN 'Z' ELSE team.team_id END AS "team.team_id"
       FROM looker_scratch.new_urls  AS new_urls
       LEFT JOIN public.team  AS team ON new_urls.url LIKE ('%'||team.name||'%')
 
@@ -25,6 +25,7 @@ view: team {
     type: string
     sql: ${TABLE}."new_urls.url" ;;
     html: <img src="{{rendered_value}}" height="80"> ;;
+    order_by_field: team_id
   }
 
   dimension: name {
