@@ -123,10 +123,10 @@ explore: play {
 
 
 explore: play_player {
-  access_filter: {
-    user_attribute: team
-    field: player.team
-  }
+#   access_filter: {
+#     user_attribute: team
+#     field: player.team
+#   }
   join: play {
     type: inner
     sql_on: ${play_player.play_id} = ${play.play_id} AND ${play_player.gsis_id} = ${play.gsis_id} AND ${play_player.drive_id} = ${play.drive_id};;

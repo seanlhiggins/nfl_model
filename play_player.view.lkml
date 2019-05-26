@@ -860,7 +860,9 @@
         label: "Change Metric"
         url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
       }
-      sql: COALESCE(${passing_cmp},0) ;;
+      sql:
+
+      COALESCE(${passing_cmp},0) ;;
       value_format_name: decimal_2
       group_label: "Passing Stats"
 #       html: {% if value < 50 %}
@@ -874,9 +876,21 @@
       drill_fields: [detail*]
 
     }
+    parameter: dynamic_metric_selector {
+      allowed_value: {value:"INT"}
+      allowed_value: {value:"FUM"}
+      allowed_value: {value:"TD"}
+    }
     measure: total_passing_ints {
       type: sum
-      sql: ${passing_int} ;;
+      sql:
+      {% if dynamic_metric_selector._parameter_value =='INT' %}
+      ${passing_int}
+      {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
+      ${fumbles_lost}
+      {% else %}
+      ${passing_tds} + ${rushing_tds}
+      {% endif %};;
       link: {
         label: "Change Metric"
         url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
