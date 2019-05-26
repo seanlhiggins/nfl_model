@@ -6,6 +6,8 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
+label: "NFL"
+
 datagroup: nfl_daily_datagroup {
   sql_trigger: SELECT CURRENT_DATE ;;
   max_cache_age: "24 hours"
@@ -123,6 +125,8 @@ explore: play {
 
 
 explore: play_player {
+  label: "Player Stats"
+  description: "Individual player statistics, by team, game, down and distances"
 #   access_filter: {
 #     user_attribute: team
 #     field: player.team
