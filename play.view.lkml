@@ -391,6 +391,7 @@ view: play {
       field: is_active_play
       value: "yes"
     }
+    value_format_name: decimal_0
   }
 
   measure: sfty_count {
@@ -403,7 +404,8 @@ view: play {
       field: is_active_play
       value: "yes"
     }
-  }
+    value_format_name: decimal_0
+    }
 
   measure: pick6_count {
     type: count
@@ -415,7 +417,8 @@ view: play {
       field: is_active_play
       value: "yes"
     }
-  }
+    value_format_name: decimal_0
+    }
   measure: fg_perc {
     type: number
     value_format_name: decimal_4
