@@ -563,48 +563,48 @@
     col: 12
     width: 12
     height: 2
-  # - title: TD/ATT Yardline
-  #   name: TD/ATT Yardline
-  #   model: nfl_1
-  #   explore: play_player
-  #   type: aster
-  #   fields: [play_player.total_passing_att, play_player.total_passing_tds, play.yardlines]
-  #   sorts: [play_player.total_passing_att desc]
-  #   limit: 10
-  #   query_timezone: Europe/Dublin
-  #   color_range: ["#639e4f", "#C32F4B", "#E1514B", "#F47245", "#FB9F59", "#FEC574",
-  #     "#FAE38C", "#EAF195", "#C7E89E", "#9CD6A4", "#6CC4A4", "#4D9DB4", "#4776B4",
-  #     "#5E4EA1"]
-  #   dataLabelToggle: true
-  #   dataLabelSize: 10.5
-  #   keyword_search: ''
-  #   legendtoggle: true
-  #   legendAlign: left
-  #   labelSelection: percentage
-  #   labelColour: "#C80815"
-  #   titleSize: 12.5
-  #   color_0: "#9E0041"
-  #   color_1: "#C32F4B"
-  #   color_2: "#E1514B"
-  #   color_3: "#F47245"
-  #   color_4: "#FB9F59"
-  #   color_5: "#FEC574"
-  #   color_6: "#FAE38C"
-  #   color_7: "#EAF195"
-  #   color_8: "#C7E89E"
-  #   color_9: "#9CD6A4"
-  #   axisRadiusMin: '10'
-  #   axisRangeMin: '10'
-  #   innerRadiusSize: 11
-  #   series_types: {}
-  #   title_hidden: true
-  #   listen:
-  #     Team: play_player.team
-  #     Year: game.season_year
-  #   row: 0
-  #   col: 0
-  #   width: 9
-  #   height: 8
+  - title: TD/ATT Yardline
+    name: TD/ATT Yardline
+    model: nfl_1
+    explore: play_player
+    type: aster
+    fields: [play_player.total_passing_att, play_player.total_passing_tds, play.yardlines]
+    sorts: [play_player.total_passing_att desc]
+    limit: 10
+    query_timezone: Europe/Dublin
+    color_range: ["#639e4f", "#C32F4B", "#E1514B", "#F47245", "#FB9F59", "#FEC574",
+      "#FAE38C", "#EAF195", "#C7E89E", "#9CD6A4", "#6CC4A4", "#4D9DB4", "#4776B4",
+      "#5E4EA1"]
+    dataLabelToggle: true
+    dataLabelSize: 10.5
+    keyword_search: ''
+    legendtoggle: true
+    legendAlign: left
+    labelSelection: percentage
+    labelColour: "#C80815"
+    titleSize: 12.5
+    color_0: "#9E0041"
+    color_1: "#C32F4B"
+    color_2: "#E1514B"
+    color_3: "#F47245"
+    color_4: "#FB9F59"
+    color_5: "#FEC574"
+    color_6: "#FAE38C"
+    color_7: "#EAF195"
+    color_8: "#C7E89E"
+    color_9: "#9CD6A4"
+    axisRadiusMin: '10'
+    axisRangeMin: '10'
+    innerRadiusSize: 11
+    series_types: {}
+    title_hidden: true
+    listen:
+      Team: play_player.team
+      Year: game.season_year
+    row: 0
+    col: 0
+    width: 9
+    height: 8
   - title: Pick 6
     name: Pick 6
     model: nfl_1
