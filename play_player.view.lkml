@@ -911,12 +911,12 @@ measure: dynamic_metric {
       {% else %}
       ${total_passing_tds} + ${total_rushing_tds}
       {% endif %};;
-  # link: {
-  #   label: "Change Metric"
-  #   url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
-  # }
+  link: {
+    label: "Change Metric"
+    url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
+  }
   drill_fields: [detail*]
-  html: <a href="{{link}}?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{linked_value}}</a> ;;
+  # html: <a href="{{link}}?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{linked_value}}</a> ;;
 }
 
 #Receiving Stats
