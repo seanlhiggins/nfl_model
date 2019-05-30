@@ -916,7 +916,7 @@ measure: dynamic_metric {
   #   url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
   # }
   drill_fields: [detail*]
-  html: <a href="{{link}}?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{linked_value}}} ;;
+  html: <a href="{{link}}?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{linked_value}}</a> ;;
 }
 
 #Receiving Stats
