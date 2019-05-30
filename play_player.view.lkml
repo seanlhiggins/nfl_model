@@ -915,6 +915,7 @@ measure: dynamic_metric {
   #   label: "Change Metric"
   #   url: "?type=metric_popup&destination={{_filters['play_player.destination']}}"
   # }
+  drill_fields: [detail*]
   html: <a href="{{link}}?type=metric_popup&destination={{_filters['play_player.destination']}}" target="_blank">{{linked_value}}} ;;
 }
 
