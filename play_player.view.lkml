@@ -877,10 +877,10 @@
 
     }
     parameter: dynamic_metric_selector {
-      type: unquoted
-      allowed_value: {value:"INT"}
-      allowed_value: {value:"FUM"}
-      allowed_value: {value:"TD"}
+      type: string
+      allowed_value: {value:"The_INT" label:"Team INT"}
+      allowed_value: {value:"The_FUM" label:"Team FUM"}
+      allowed_value: {value:"The_TD" label:"Team TD"}
     }
     measure: total_passing_ints {
       type: sum
