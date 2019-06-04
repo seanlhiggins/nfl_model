@@ -905,11 +905,11 @@ measure: dynamic_metric {
   type: number
   description: "Metric changes with parameter selection; INT/FUM/TD"
   sql: {% if dynamic_metric_selector._parameter_value =='INT' %}
-      ${total_passing_ints} {{dynamic_metric_selector._parameter_value}}||"int"
+      ${total_passing_ints} {{dynamic_metric_selector._parameter_value}}
       {% elsif dynamic_metric_selector._parameter_value =='FUM' %}
-      ${total_rushing_fumbles} {{dynamic_metric_selector._parameter_value}} ||"fum"
+      ${total_rushing_fumbles} {{dynamic_metric_selector._parameter_value}}
       {% else %}
-      ${total_passing_tds} + ${total_rushing_tds} ||"td"
+      ${total_passing_tds} + ${total_rushing_tds}
       {% endif %};;
   link: {
     label: "Change Metric"
