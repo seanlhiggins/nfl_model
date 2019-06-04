@@ -877,7 +877,7 @@
 
     }
     parameter: dynamic_metric_selector {
-      type: string
+      type: unquoted
       allowed_value: {value:"INT" label:"INT"}
       allowed_value: {value:"FUM" label:"FUM"}
       allowed_value: {value:"TD" label:"TD"}
