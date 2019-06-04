@@ -878,8 +878,8 @@
     }
     parameter: dynamic_metric_selector {
       type: string
-      allowed_value: {value:"The INT" label:"INT"}
-      allowed_value: {value:"The FUM" label:"FUM"}
+      allowed_value: {value:"The^_INT" label:"INT"}
+      allowed_value: {value:"The^_FUM" label:"FUM"}
       allowed_value: {value:"The TD" label:"TD"}
     }
     measure: total_passing_ints {
