@@ -878,9 +878,9 @@
     }
     parameter: dynamic_metric_selector {
       type: string
-      allowed_value: {value:"INT" label:"Team INT"}
-      allowed_value: {value:"FUM" label:"Team FUM"}
-      allowed_value: {value:"TD" label:"Team TD"}
+      allowed_value: {value:"INT" label:"INT"}
+      allowed_value: {value:"FUM" label:"FUM"}
+      allowed_value: {value:"TD" label:"TD"}
     }
     measure: total_passing_ints {
       type: sum
