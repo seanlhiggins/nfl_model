@@ -878,9 +878,9 @@
     }
     parameter: dynamic_metric_selector {
       type: string
-      allowed_value: {value:"The^_INT" label:"INT"}
-      allowed_value: {value:"The^_FUM" label:"FUM"}
-      allowed_value: {value:"The TD" label:"TD"}
+      allowed_value: {value:"INT" label:"INT"}
+      allowed_value: {value:"FUM" label:"FUM"}
+      allowed_value: {value:"TD" label:"TD"}
     }
     measure: total_passing_ints {
       type: sum
@@ -904,9 +904,9 @@ measure: dynamic_metric {
   label: "Dynamic Metric"
   type: number
   description: "Metric changes with parameter selection; INT/FUM/TD"
-  sql: {% if dynamic_metric_selector._parameter_value == "'The^_INT'" %}
+  sql: {% if dynamic_metric_selector._parameter_value == "'INT'" %}
       ${total_passing_ints}
-      {% elsif dynamic_metric_selector._parameter_value == "'The^_FUM'" %}
+      {% elsif dynamic_metric_selector._parameter_value == "'FUM'" %}
       ${total_rushing_fumbles}
       {% else %}
       ${total_passing_tds} + ${total_rushing_tds}

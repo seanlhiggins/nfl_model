@@ -39,6 +39,7 @@ view: team {
   }
 
   dimension: team_id {
+    label: "Play Dashboard"
     type: string
     sql: ${TABLE}."team.team_id" ;;
   }
